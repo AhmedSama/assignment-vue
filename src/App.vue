@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Article v-if="data" :data="data" />
+    <div v-else>loading...</div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Article from './components/Article.vue'
+import {article} from './data'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Article
+  },
+  data(){
+    return {
+      data : null
+    }
+  },
+  mounted(){
+    this.data = article
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .container{
+    max-width: 715px;
+    margin: 100px auto;
+  }
 </style>
